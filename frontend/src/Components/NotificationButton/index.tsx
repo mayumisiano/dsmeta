@@ -8,14 +8,24 @@ type Props = {
     saleId: number;
 }
 
-function handleClick(id : number) {
+function handleClick(id: number) {
     axios(`${BASE_URL}/sales/${id}/notification`)
         .then(response => {
-            toast.info("SMS enviado com sucesso");
+            toast('📱 SMS enviado com sucesso!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+            });
+
         })
 }
 
-function NotificationButton( {saleId} : Props ) {
+function NotificationButton({ saleId }: Props) {
     return (
         <div className="dsmeta-red-btn" onClick={() => handleClick(saleId)}>
             <img src={icon} alt="Notificar" />
